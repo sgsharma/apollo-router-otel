@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  # apollo-router:
+  #   container_name: apollo-router
+  #   # build:
+  #   #   context: .
+  #   image: ghcr.io/apollographql/router:v1.0.0
+  #   volumes:
+  #     - ./supergraph-schema.graphql:/etc/config/supergraph.graphql
+  #     - ./router.yaml:/etc/config/configuration.yaml
+  #   command:
+  #     [
+  #       "-c",
+  #       "/etc/config/configuration.yaml",
+  #       "-s",
+  #       "/etc/config/supergraph.graphql",
+  #       "--log",
+  #       "info"
+  #     ]
+  #   ports:
+  #     - 4000:4000
+  collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    command: ["--config=/etc/otelcol/config.yaml"]
+    environment:
+      - HONEYCOMB_API_KEY
+      - HONEYCOMB_DATASET
+    volumes:
+      - ./otel-local-config.yaml:/etc/otelcol/config.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
