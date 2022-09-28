@@ -3,26 +3,23 @@ telemetry:
     trace_config:
       service_name: "router"
       service_namespace: "apollo"
-      sampler: 1
+      sampler: 0
     otlp:
-      endpoint: 0.0.0.0:4317
-      # Optional protocol (Defaults to grpc)
-      protocol: grpc
-  metrics:
-    prometheus:
-      enabled: true
-    common:
-      attributes:
-        subgraph:
-          all:
-            errors:
-              extensions: # Include extensions data
-                - name: subgraph_error_extended_type # Name of the attribute
-                  path: .type # JSON query path to fetch data from extensions
+      # protocol: grpc
+      # endpoint: "api.honeycomb.io:443"
+      # grpc:
+      #   metadata:
+      #     x-honeycomb-team: ${HONEYCOMB_API_KEY}
+      protocol: http
+      endpoint: "https://api.honeycomb.io/v1/traces"
+      http:
+        headers:
+          x-honeycomb-team: ${HONEYCOMB_API_KEY}
+      # Optional timeout in humantime form
+      timeout: 2s
 
 headers:
   all:
-    request:
-      - propagate:
-          matching: .*
+    - propagate:
+        matching: .*
           

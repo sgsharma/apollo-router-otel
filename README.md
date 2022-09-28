@@ -20,12 +20,6 @@ $ export HONEYCOMB_API_KEY=<YOUR-API-KEY>
 $ export HONEYCOMB_DATASET=<YOUR-DATASET>
 ```
 
-## Collector Quickstart
-
-```
-$ docker-compose up -d --build
-```
-
 ## Test
 
 ```
