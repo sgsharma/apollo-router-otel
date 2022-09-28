@@ -17,7 +17,6 @@ $ ./router --config router.yaml --supergraph supergraph-schema.graphql
 
 ```
 $ export HONEYCOMB_API_KEY=<YOUR-API-KEY>
-$ export HONEYCOMB_DATASET=<YOUR-DATASET>
 ```
 
 ## Test
