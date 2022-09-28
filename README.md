@@ -7,7 +7,7 @@
 $ curl -sSL https://router.apollo.dev/download/nix/latest | sh
 
 # Download the example supergraph schema
-$ curl -sSL https://supergraph.demo.starstuff.dev/ > supergraph-schema.graphql
+$ curl -sSL https://supergraph.demo.starstuff.dev/ > supergraph-schema.graphql --log debug
 
 # Run the binary
 $ ./router --config router.yaml --supergraph supergraph-schema.graphql
